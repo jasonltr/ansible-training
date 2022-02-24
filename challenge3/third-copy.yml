@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+    - name: download data from data.gov,sg
+      get_url:
+        url: https://data.gov.sg/dataset/5453adfd-8c37-47b7-860a-19101f355be6/download
+        dest: /home/jason/ansible/challenge3/data.zip
+        mode: '0700'
+
+
+
