@@ -1,0 +1,11 @@
+#hosts-dev
+
+[local]
+control ansible_connection=local
+
+[acg]
+target1 ansible_host=54.82.2.68
+ansible_connection=ssh 
+ansible_user=cloud_user
+ansible_ssh_pass=Cw6OY%2w
+ansible_password=Cw6OY%2w

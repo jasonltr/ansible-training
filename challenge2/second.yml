@@ -1,0 +1,54 @@
+---
+  - hosts: target1
+    remote_user: cloud_user
+    become: true
+    vars:
+      userss: #I define this variable userss here
+        - jen #jen is in all groups
+        - william #william is in all groups
+        - matt #sales only
+        - sam #sales only
+        - anne #sales only
+        - danny #sales only
+        - kate #operations
+        - bruce #operations               
+      groupss:
+        - Management
+        - Sales
+        - Operations
+    tasks:
+    - name: create group
+      group:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ groupss }}"
+    - name: add jen and william to all groups
+      user:
+        name: "{{ item }}"
+        groups: Management,Sales,Operations
+      with_items:
+        - "{{ userss[0] }}"
+        - "{{ userss[1] }}"
+    - name: add sales members
+      user:
+        name: "{{item}}"
+        groups: Sales
+      with_items:
+        - "{{ userss[2] }}"
+        - "{{ userss[3] }}"
+        - "{{ userss[4] }}"
+        - "{{ userss[5] }}"
+    - name: add ops members
+      user:
+        name: "{{item}}"
+        groups: Operations
+      with_items:
+        - "{{ userss[6] }}"
+        - "{{ userss[7] }}" 
+    - name: print out answer
+      shell: tail -n15 /etc/group
+      register: output
+    - debug:
+        msg:
+        - "{{output.stdout}}"
+
