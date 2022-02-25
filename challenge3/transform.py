@@ -3,12 +3,15 @@ import pandas as pd
 uni = pd.read_csv('/home/jason/Documents/GitHub/ansible-training/challenge3/universities-intake-enrolment-and-graduates-by-course.csv')
 poly = pd.read_csv('/home/jason/Documents/GitHub/ansible-training/challenge3/polytechnics-intake-enrolment-and-graduates-by-course.csv')
 
+#Filter IT only
 uniIT = uni.loc[(uni.course=='Information Technology')&(uni.sex=='MF')]
 polyIT = poly.loc[(poly.course=='Information Technology')&(poly.sex=='MF')]
 
+#Set index
 uniIT = uniIT.set_index(['year','sex','course'])
 polyIT = polyIT.set_index(['year','sex','course'])
 
+#transform data to int
 uniIT['intake']=uniIT['intake'].astype(str)
 uniIT['intake']=uniIT['intake'].str.replace(',','')
 
@@ -35,6 +38,8 @@ polyIT['intake'] = pd.to_numeric(polyIT['intake'])
 polyIT['enrolment'] = pd.to_numeric(polyIT['enrolment'])
 polyIT['graduates'] = pd.to_numeric(polyIT['graduates'])
 
+#add them up
 allIT = uniIT.add(polyIT)
 
+#export to csv
 allIT.to_csv('/home/jason/Documents/GitHub/ansible-training/challenge3/allIT.csv')
