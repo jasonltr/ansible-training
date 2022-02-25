@@ -1,0 +1,77 @@
+# Metadata for Universities - Intake, Enrolment and Graduates by Course
+---
+Identifier: '249f1149-1e04-40e2-81c6-bfab3bba5574'
+Name: 'universities-intake-enrolment-and-graduates-by-course'
+Title: 'Universities - Intake, Enrolment and Graduates by Course'
+Description:
+  - 'Intake, enrolment and graduates of universities by course'
+  - ''
+  - 'Notes: 1) Universities refers to National University of Singapore, Nanyang Technological
+    University, Singapore Management University, Singapore Institute of Technology,
+    Singapore University of Technology & Design and Singapore University of Social
+    Sciences.'
+  - '2) Intake, enrolment and graduates figures refer to full-time first degree only.'
+  - '3) Intake figures include students who entered directly into second and subsequent
+    years.'
+  - '4) Courses are classified according to course content of the highest weighting.'
+Topics:
+  - 'Education'
+Keywords:
+  - 'Degree'
+  - 'Enrolment'
+  - 'Graduate'
+  - 'Intake'
+  - 'Tertiary Education'
+Publisher:
+  Name: 'Ministry of Education'
+  Admin 1:
+    Name: 'Chng Lung Huang'
+    Department: 'RMID'
+    Email: 'moe_management_information@moe.gov.sg'
+Sources:
+  - 'Ministry of Education'
+License: 'https://data.gov.sg/open-data-licence'
+Frequency: 'Annual'
+Coverage: '2005-01-01 to 2020-12-31'
+Last Updated: '2021-10-18T09:08:12.962346'
+Resources:
+  -
+    Identifier: '115bf8a7-46df-466c-b7fc-375ef3c1b425'
+    Title: 'Universities - Intake, Enrolment and Graduates by Course'
+    Url: 'https://storage.data.gov.sg/universities-intake-enrolment-and-graduates-by-course/resources/universities-intake-enrolment-and-graduates-by-course-2021-10-18T09-08-12Z.csv'
+    Format: 'CSV'
+    Coverage: '2005-01-01 to 2020-12-31'
+    Description: 'Intake, enrolment and graduates of universities by course'
+    Last Updated: '2021-10-18T09:08:12.419015'
+    Schema:
+      -
+        Name: 'year'
+        Title: 'Year'
+        Type: 'datetime'
+        Sub Type: 'year'
+        Format: 'YYYY'
+      -
+        Name: 'sex'
+        Title: 'Sex'
+        Type: 'text'
+        Sub Type: 'general'
+      -
+        Name: 'course'
+        Title: 'Course'
+        Type: 'text'
+        Sub Type: 'general'
+      -
+        Name: 'intake'
+        Title: 'Intake'
+        Type: 'text'
+        Sub Type: 'general'
+      -
+        Name: 'enrolment'
+        Title: 'Enrolment'
+        Type: 'text'
+        Sub Type: 'general'
+      -
+        Name: 'graduates'
+        Title: 'Graduates'
+        Type: 'text'
+        Sub Type: 'general'
