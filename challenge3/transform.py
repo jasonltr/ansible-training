@@ -1,7 +1,7 @@
 
 import pandas as pd
-uni = pd.read_csv('/home/jason/Documents/GitHub/ansible-training/challenge3/universities-intake-enrolment-and-graduates-by-course.csv')
-poly = pd.read_csv('/home/jason/Documents/GitHub/ansible-training/challenge3/polytechnics-intake-enrolment-and-graduates-by-course.csv')
+uni = pd.read_csv('./universities-intake-enrolment-and-graduates-by-course.csv')
+poly = pd.read_csv('./polytechnics-intake-enrolment-and-graduates-by-course.csv')
 
 #Filter IT only
 uniIT = uni.loc[(uni.course=='Information Technology')&(uni.sex=='MF')]
@@ -24,6 +24,6 @@ polyIT=polyIT.astype({'intake':'int','enrolment':'int','graduates':'int'})
 allIT = uniIT.add(polyIT)
 
 #export to csv
-allIT.to_csv('/home/jason/Documents/GitHub/ansible-training/challenge3/allIT.csv')
+allIT.to_csv('./allIT.csv')
 
 print(allIT)
