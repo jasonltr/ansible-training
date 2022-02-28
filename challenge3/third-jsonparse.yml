@@ -1,0 +1,66 @@
+---
+  - hosts: control
+    tasks:
+      - name: get uni data from data.gov.sg Information Technology + MF
+        uri:
+          url: https://data.gov.sg/api/action/datastore_search?resource_id=115bf8a7-46df-466c-b7fc-375ef3c1b425&q=Information+Technology+MF
+          method: GET
+          return_content: yes
+          status_code: 200
+          timeout: 30
+          body_format: json
+        register: uni_result
+
+      - name: print  
+        debug:
+          msg: "{{ uni_result.json }}"
+
+      # - name: find uni IT graduate numbers
+      #   set_fact:
+      #       mydict: "{{ mydict | default({'answer': '{{ uni_result.json.result | json_query('records[?course==`Information Technology`].graduates')| list | map('int')|sum}}'}) }}"
+
+      # - name: print  
+      #   debug:
+      #     msg: "The total number of uni graduates in IT is {{ mydict['answer'] }}"
+
+      - name: print  
+        debug:
+          msg: "{{ uni_result.json.result | json_query('records[?course==`Information Technology`].graduates')| list|map('int')|sum}}"
+        register: uniIT
+
+      - name: total uni IT
+        debug:
+          msg: "Total Uni IT grads is {{uniIT['msg']}}"
+
+
+      # - name: find graduate numbers
+      #   debug:
+      #     var: item
+      #   loop: "{{ uni_result.json.result | json_query('records[*].graduates') }}"
+
+      - name: get poly data from data.gov.sg Information Technology + MF
+        uri:
+          url: https://data.gov.sg/api/action/datastore_search?resource_id=f358cf0d-61fa-4eeb-93a2-1eca971cf1a4&q=Information+Technology+MF
+          method: GET
+          return_content: yes
+          status_code: 200
+          timeout: 30
+          body_format: json
+        register: poly_result
+
+      - name: find poly IT graduate numbers
+        debug:
+          msg: "{{ poly_result.json.result | json_query('records[?course==`Information Technology`].graduates')| list |map('int')|sum}}"
+        register: polyIT
+
+      - name: total poly IT graduate numbers
+        debug:
+          msg: "The polyIT graduates in IT is {{polyIT['msg']}}"
+          
+      - name: total IT graduates
+        debug:
+          msg: "The total graduates in IT is {{polyIT['msg']|int + uniIT['msg']|int}} "
+
+
+
+
