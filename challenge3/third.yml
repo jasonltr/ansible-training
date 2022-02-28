@@ -1,22 +1,22 @@
 ---
 - hosts: localhost
   tasks:
-    - name: download and unzip uni data
-      unarchive:
-        src: https://data.gov.sg/dataset/249f1149-1e04-40e2-81c6-bfab3bba5574/download
-        dest: ./
-        remote_src: yes
-        mode: '0700'
-    - name: download and unzip poly data
-      unarchive:
-        src: https://data.gov.sg/dataset/f6048a81-0f7b-436c-8bfa-ebe1bb42cfdc/download
-        dest: ./
-        remote_src: yes
-        mode: '0700'
-    - name: script
-      script: ./transform.py
-      args:
-        executable: python3.8
-      register: output
-    - debug:
-        var: output.stdout_lines
+  - name: download and unzip uni data
+    unarchive:
+      src: https://data.gov.sg/dataset/249f1149-1e04-40e2-81c6-bfab3bba5574/download
+      dest: ./
+      remote_src: yes
+      mode: '0700'
+  - name: download and unzip poly data
+    unarchive:
+      src: https://data.gov.sg/dataset/f6048a81-0f7b-436c-8bfa-ebe1bb42cfdc/download
+      dest: ./
+      remote_src: yes
+      mode: '0700'
+  - name: script
+    script: ./transform.py
+    args:
+      executable: python3.8
+    register: output
+  - debug:
+      var: output.stdout_lines
